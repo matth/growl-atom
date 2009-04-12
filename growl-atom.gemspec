@@ -1,6 +1,6 @@
 Gem::Specification.new do |s| 
   s.name = "growl-atom"
-  s.version = "0.0.1"
+  s.version = "0.0.2"
   s.author = "Matt Haynes"
   s.email = "matt@matthaynes.net"
   s.homepage = "http://matthaynes.net/blog/"
