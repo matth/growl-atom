@@ -8,21 +8,15 @@ module GrowlAtom
 
 	VERSION = "0.0.1"
 	
+	class Error < StandardError; end
+	
 	def GrowlAtom.gem_dir 
 		File.expand_path(File.join(File.dirname(__FILE__), '..'))
 	end
 	
-	class Error < StandardError; end
-	
-	class Checker
-	
-		def initialize(config_file)
-			
-			@config_file = config_file
+
 		
-		end
-		
-		def check(url, options = {}) 
+	def GrowlAtom.check(url, options = {}) 
 =begin				
 			cache_file = 'cache'
 

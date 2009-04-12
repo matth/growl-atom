@@ -5,7 +5,7 @@ Gem::Specification.new do |s|
   s.email = "matt@matthaynes.net"
   s.homepage = "http://matthaynes.net/blog/"
   s.platform = 'universal-darwin-9'
-  s.summary = "Create growl notifications for Atom entries"
+  s.summary = "Creates growl notifications for Atom entries"
   s.bindir = 'bin'
   s.executables << 'growl-atom'
   s.files = ["lib/growl-atom.rb"]
