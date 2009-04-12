@@ -5,8 +5,8 @@ you to new unread messages via Growl
  
 == Prerequisites:
 
-* Growl on Mac OS X http://growl.info/
-* The growlnoftify application installed http://growl.info/extras.php#growlnotify
+* Growl on Mac OS X See: http://growl.info
+* The growlnoftify application installed See: http://growl.info/extras.php#growlnotify
  
 == License:
 
