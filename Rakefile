@@ -1,7 +1,7 @@
 $:.unshift 'lib'
 require 'growl-gmail'
 
-launch_agent = "net.matthaynes.growl.gmail"
+launch_agent = "matth.growl.gmail"
 launch_agent_plist = launch_agent + ".plist"
 launch_agents_dir = File.expand_path('~') + "/Library/LaunchAgents/"
 
