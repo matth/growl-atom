@@ -8,7 +8,7 @@ Gem::Specification.new do |s|
   s.summary = "Creates growl notifications for Atom entries"
   s.bindir = 'bin'
   s.executables << 'growl-atom'
-  s.files = ["lib/growl-atom.rb"]
+  s.files = ["lib/growl-atom.rb", "icons/gmail.png"]
   s.require_path = "lib"
   s.has_rdoc = false
   s.add_dependency('growl', '>= 0.0.6')

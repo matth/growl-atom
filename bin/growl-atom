@@ -44,7 +44,7 @@ launch_agents_dir = user_dir + "/Library/LaunchAgents/"
 case ARGV[0]
 	when 'check'
 	
-		puts GrowlAtom.gem_dir
+		GrowlAtom.check(File.join(user_dir, '.growl-atom'))
 		exit
 		
 	when 'install'
