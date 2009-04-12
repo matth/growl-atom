@@ -16,6 +16,7 @@
 #  title: Name of Atom entry node to be used as notification title, default is title
 #  message: Name of Atom entry node to be used as notification message, default is summary
 #  image: /path/to/notification/icon.png
+#  sticky: true default is false
 #
 
 # Global configs 
