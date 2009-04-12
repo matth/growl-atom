@@ -31,7 +31,8 @@ intervals.
 
 The install command will generate an example config file in ~/.growl-atom/config You can add
 feeds and config options to this file. This is a YAML file.
-	---
+
+	\---
 	
 	global:
 	 growl_host : localhost
