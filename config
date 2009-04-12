@@ -1,0 +1,31 @@
+# Example config for growl-atom, note this is a YAML file, see http://yaml.org/
+
+# Available options:
+#
+# global:
+#  growl_host : localhost
+#  growl_pass : your_pass
+#
+# feeds:
+#  name: Growl Application Name
+#  url: http://your.feed.com
+#  auth_user: http_user
+#  auth_pass: http_pass
+#  title: Name of Atom entry node to be used as notification title, default is title
+#  message: Name of Atom entry node to be used as notification message, default is summary
+#  icon: /path/to/notification/icon.png
+#
+
+# Global configs 
+#
+# These config options can be overwritten on a per feed basis
+
+global:
+ growl_host : localhost
+ 
+feeds:
+ - name: Gmail
+   url: https://mail.google.com/mail/feed/atom/
+   auth_user: your_gmail_username
+   auth_pass: your_gmail_password
+   icon: ~/.growl-atom/icons/gmail.png

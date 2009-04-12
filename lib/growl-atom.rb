@@ -9,57 +9,70 @@ module GrowlAtom
 	VERSION = "0.0.1"
 	
 	class Error < StandardError; end
-	
+
+	# The Installation directory of this gem package	
 	def GrowlAtom.gem_dir 
 		File.expand_path(File.join(File.dirname(__FILE__), '..'))
 	end
 	
-
+	# Check all URLs in this config file
+	def GrowlAtom.check(config_dir)
 		
-	def GrowlAtom.check(url, options = {}) 
-=begin				
-			cache_file = 'cache'
-
-			system("touch #{cache_file}")
-	
-			# Download it
-			http = Net::HTTP.new('mail.google.com', 443)
-			req = Net::HTTP::Get.new('/mail/feed/atom/')
-			http.use_ssl = true
-			http.verify_mode = OpenSSL::SSL::VERIFY_NONE
-			req.basic_auth '', ''
-			response = http.request(req)
-	
-			# Parse it	
-			include REXML
-			
-			doc = Document.new response.body
-			doc.elements.each('//entry') {|entry| 
-				
-				id = entry.elements['id'].text			
-				
-				if (!system("grep #{id} #{cache_file} > /dev/null")) 
-				
-					GrowlGmail.notify({
-						:message => entry.elements['title'].text,
-						:title => entry.elements['author/name'].text
-					})
-					
-					system("echo #{id} >> #{cache_file}")
-				
-				end
-			
-			}				
-					  
-=end		
-		end
-		
-		def notify(options)
-#			#image = File.join(File.expand_path(File.dirname(__FILE__)), "gmail.png")
-			Growl.notify 'Growl Atom', options.merge({:name => 'GrowlGmail', :image => image, :host => 'localhost'})
-		end
+		config_file = File.join(config_dir, 'config')
+		cache_dir = File.join(config_dir, 'caches')
 		
 		
 	end
+	
+	def GrowlAtom.get_feed(url, options)
+		
+	end
+	
+	def GrowlAtom.parse_feed
+	
+=begin				
+		cache_file = 'cache'
+
+		system("touch #{cache_file}")
+
+		# Download it
+		http = Net::HTTP.new('mail.google.com', 443)
+		req = Net::HTTP::Get.new('/mail/feed/atom/')
+		http.use_ssl = true
+		http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+		req.basic_auth '', ''
+		response = http.request(req)
+
+		# Parse it	
+		include REXML
+		
+		doc = Document.new response.body
+		doc.elements.each('//entry') {|entry| 
+			
+			id = entry.elements['id'].text			
+			
+			if (!system("grep #{id} #{cache_file} > /dev/null")) 
+			
+				GrowlGmail.notify({
+					:message => entry.elements['title'].text,
+					:title => entry.elements['author/name'].text
+				})
+				
+				system("echo #{id} >> #{cache_file}")
+			
+			end
+		
+		}				
+					  
+=end		
+	end
+		
+	def notify(options)
+#			#image = File.join(File.expand_path(File.dirname(__FILE__)), "gmail.png")
+		Growl.notify 'Growl Atom', options.merge({:name => 'GrowlGmail', :image => image, :host => 'localhost'})
+	end
+	
+		
+
 	
 end
