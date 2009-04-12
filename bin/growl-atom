@@ -29,8 +29,6 @@
 #	~/.growl-atom/caches/
 #
 
-$:.unshift File.join(File.dirname(__FILE__), "..", "lib")
-
 require 'rubygems'
 require 'growl-atom'
 require 'rdoc/usage'

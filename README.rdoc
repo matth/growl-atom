@@ -68,12 +68,17 @@ Then uninstall the gem
 
 	gem uninstall growl-atom -a
 	
-== Clearing the cache
+== Clearing the caches
 
 growl-atom works by caching the Atom entry ID's of all messages it has alrady notified you of. It
 can sometimes be usefule to clear these caches, especially when debugging.
 
-	growl-atom clear-cache
+	growl-atom clear-caches
+	
+== Known Issues and Future Improvements
+
+ * No support for web proxies (how to do this intelligently i.e. Not hardcoding it in the config)
+ * No support for client certificates
 
 == License:
 

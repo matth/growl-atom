@@ -7,9 +7,10 @@
 		<key>ProgramArguments</key>
 		<array>
 			<string>growl-atom</string>
+			<string>check</string>			
 		</array>
 		<key>StartInterval</key>
-		<integer>60</integer>
+		<integer>90</integer>
 		<key>EnvironmentVariables</key>
 		<dict>
 			<key>PATH</key>

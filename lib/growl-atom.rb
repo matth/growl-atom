@@ -26,7 +26,7 @@ module GrowlAtom
 			:title => 'title',
 			:message => 'summary',
 			:growl_host => 'localhost',
-			:sticky => true
+			:sticky => false
 		}
 		
 		config = YAML.load_file(File.join(config_dir, 'config'))
