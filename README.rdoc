@@ -7,15 +7,6 @@ you to new unread messages via Growl
 
 * Growl on Mac OS X http://growl.info/
 * The growlnoftify application installed http://growl.info/extras.php#growlnotify
-
-== Installation
-
-No gem or anything yet, just require the files as normal
- 
-== Assumptions:
-
-This application has been tested on Mac OSX with Ruby 1.8, no 
-guarantees with anything else
  
 == License:
 
