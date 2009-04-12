@@ -13,10 +13,12 @@ A small ruby script to monitor Atom feeds and create Growl notitifcations fro ea
 
 === Install the growl-atom gem
 
-* Run the following if you haven't already:
-** +gem sources -a http://gems.github.com+
-* Install the gem:
-** +sudo gem install matth-growl-atom+
+Run the following if you haven't already:
+
+	\+gem sources -a http://gems.github.com+
+
+Install the gem:
+	\+sudo gem install matth-growl-atom+
 
 === Install a local config and LaunchAgent
 
