@@ -1,0 +1,92 @@
+#!/usr/bin/ruby
+
+# == Synopsis
+#
+# Makes growl notifications from new Atom entries. 
+# 
+# == Usage
+#
+# growl-atom [COMMAND]
+#
+# help:
+#	Show this help page
+#
+# check:
+#	Check the current feeds defined in the current user's config file, found at
+#	~/.growl-atom/config This command is run from the LaunchAgent setup by the install command
+#
+# install:
+#	Install this for the current user, installs an OS X LaunchAgent (daemon process) for 
+#	the current user and creates an empty config file in ~/.growl-atom/config
+#
+# uninstall:
+#	Uninstall the LaunchAgent for the current user, also delete all config and cache
+#	files under ~/.growl-atom/
+#
+# clear-caches:
+#	Clear all cache files for the current user. Cache files stop notifications being repeated.
+#	Atom entry IDs are stored in them once a notification has been shown. They can be found in
+#	~/.growl-atom/caches/
+#
+
+$:.unshift File.join(File.dirname(__FILE__), "..", "lib")
+
+require 'rubygems'
+require 'growl-atom'
+require 'rdoc/usage'
+
+user_dir = File.expand_path('~')
+gem_dir = GrowlAtom.gem_dir
+launch_agent = "growl.atom"
+launch_agent_plist = launch_agent + ".plist"
+launch_agents_dir = user_dir + "/Library/LaunchAgents/"
+
+case ARGV[0]
+	when 'check'
+	
+		puts GrowlAtom.gem_dir
+		exit
+		
+	when 'install'
+		
+		# Create user config dir
+		system 'mkdir -p ' + File.join(user_dir, '.growl-atom/caches')
+		system "cp #{File.join(gem_dir, 'config')} #{File.join(user_dir, '.growl-atom/config')}"
+		
+		# Create Launch Agent dir
+		if (!File.directory?(launch_agents_dir))
+			system "mkdir #{launch_agents_dir}"
+		end
+		
+		# Install and start launch agent
+		system "sed -e 's/@USER.HOME@/#{user_dir.gsub(/\//, '\/')}/g' #{File.join(gem_dir, launch_agent_plist)} > #{launch_agents_dir + launch_agent_plist}"
+		system "launchctl load #{launch_agents_dir + launch_agent_plist}"
+		system "launchctl start #{launch_agent}"
+		exit
+		
+	when 'uninstall'
+	
+		puts("Are you sure you want to uninstall? This will delete your config file. (y/n)") 
+		input=STDIN.gets
+						
+		if (input.chomp.downcase != 'y' ) 
+			puts "Uninstall aborted"
+			exit
+		end
+
+		# Remove Launch Agent
+		system "launchctl unload #{launch_agents_dir + launch_agent_plist}" 
+		system "rm #{launch_agents_dir + launch_agent_plist}"			
+		system 'rm -rdf ' + File.join(user_dir, '.growl-atom')
+		exit
+		
+	when 'clear-caches'
+	
+		system 'rm -rdf ' + File.join(user_dir, '.growl-atom/caches/*')
+		exit
+		
+	else
+	
+		RDoc::usage
+		exit		
+end

@@ -1,37 +1,16 @@
 $:.unshift 'lib'
-require 'growl-gmail'
-
-launch_agent = "matth.growl.gmail"
-launch_agent_plist = launch_agent + ".plist"
-launch_agents_dir = File.expand_path('~') + "/Library/LaunchAgents/"
+require 'growl-atom'
 
 task :uninstall do
-	
-	# Remove Launch Agent
-	sh "launchctl unload #{launch_agents_dir + launch_agent_plist}" 
-	sh "rm #{launch_agents_dir + launch_agent_plist}"
-	
 	# Remove gem
-	sh "gem uninstall growl-gmail -a"
-
+	sh "gem uninstall growl-atom -a"
 end
 
 task :install => [:gem] do
-
 	# Install local gem
-	sh "gem install -l growl-gmail-#{GrowlGmail::VERSION}.gem"
-	
-	# Create Launch Agent
-	if (!File.directory?(launch_agents_dir))
-		sh "mkdir #{launch_agents_dir}"
-	end
-	
-	sh "cp #{launch_agent_plist} #{launch_agents_dir + launch_agent_plist}"
-	sh "launchctl load #{launch_agents_dir + launch_agent_plist}"
-	sh "launchctl start #{launch_agent}"	
-
+	sh "gem install -l growl-atom-#{GrowlAtom::VERSION}.gem"
 end
 
 task :gem do
-	sh 'gem build growl-gmail.gemspec'
+	sh 'gem build growl-atom.gemspec'
 end
