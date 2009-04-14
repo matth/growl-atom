@@ -13,6 +13,7 @@
 #  url: http://your.feed.com
 #  auth_user: http_user
 #  auth_pass: http_pass
+#  cert: /path/to/your/client/cert.pem
 #  title: Name of Atom entry node to be used as notification title, default is title
 #  message: Name of Atom entry node to be used as notification message, default is summary
 #  image: /path/to/notification/icon.png
@@ -35,3 +36,4 @@ feeds:
    title: author/email
    message: title
    sticky: false
+   

@@ -9,7 +9,7 @@ require 'rexml/document'
 
 module GrowlAtom
 
-	VERSION = "0.0.2"
+	VERSION = "0.0.3"
 	
 	class Error < StandardError; end
 
@@ -59,6 +59,14 @@ module GrowlAtom
 			req.basic_auth options['auth_user'], options['auth_pass']
 		end
 		
+		if (options['cert']) 
+			File.open(File.expand_path(options['cert'])) do |cert_file|
+            	key_data = cert_file.read
+              	http.cert = OpenSSL::X509::Certificate.new(key_data)
+              	http.key = OpenSSL::PKey::RSA.new(key_data, nil)
+           	end
+		end
+		
 		response = http.request(req)
 		
 		if (!response.kind_of?(Net::HTTPClientError) && !response.kind_of?(Net::HTTPServerError))
@@ -98,6 +106,8 @@ module GrowlAtom
 				Growl.notify(growl_options['message'], growl_options)
 				
 			 	system("echo #{id} >> #{cache_file}")
+			 	system("tail -n 500 #{cache_file} > #{cache_file}.tmp")
+			 	system("mv #{cache_file}.tmp #{cache_file}")
 			
 			end
 		

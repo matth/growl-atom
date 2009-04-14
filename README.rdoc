@@ -57,6 +57,38 @@ This is the same command that will be run periodically by the LaunchAgent. Any e
 show up here, if you are experiencing errors when the LaunchAgent is running then check log messages 
 in /Applications/Utilities/Console
 
+== Using growl-atom with HTTP authentication
+
+If you feed requires http athentication you can provide the username and password in the config file
+
+	feeds:
+	 - name: Feed requiring authentication
+	   url: https://protectedhost.com/feed/atom/
+	   auth_user: your_username
+	   auth_pass: your_password
+
+== Using growl-atom with client certs 
+
+You can use growl-atom to access feeds requiring a client SSL certificate. You need to provide a
+.pem file with the key and cert included. If you have exported your cert from your browser it may 
+be in a .p12 format, you can convert it to a .pem with the following command:
+
+	openssl pkcs12 -in /path/to/your/cert.p12 -nodes -out ~/.growl-atom/certs/cert.pem
+	
+You can provide the path to the pem file in the growl-atom config:
+
+	feeds:
+	 - name: Feed needing Cert 
+	   url: https://protectedhost.com/feed/atom/
+	   cert: ~/.growl-atom/certs/cert.pem
+
+== Clearing the caches
+
+growl-atom works by caching the Atom entry ID's of all messages it has alrady notified you of. It
+can sometimes be usefule to clear these caches, especially when debugging.
+
+	growl-atom clear-caches
+
 == Uninstalling
 
 Uninstalling is simple enough, first uninstall the config, caches and LaunchAgent from the local
@@ -67,13 +99,6 @@ user's profile
 Then uninstall the gem
 
 	gem uninstall growl-atom -a
-	
-== Clearing the caches
-
-growl-atom works by caching the Atom entry ID's of all messages it has alrady notified you of. It
-can sometimes be usefule to clear these caches, especially when debugging.
-
-	growl-atom clear-caches
 	
 == Known Issues and Future Improvements
 

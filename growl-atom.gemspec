@@ -1,9 +1,9 @@
 Gem::Specification.new do |s| 
   s.name = "growl-atom"
-  s.version = "0.0.2"
+  s.version = "0.0.3"
   s.author = "Matt Haynes"
   s.email = "matt@matthaynes.net"
-  s.homepage = "http://matthaynes.net/blog/"
+  s.homepage = "http://github.com/matth/growl-atom/tree/master"
   s.platform = 'universal-darwin-9'
   s.summary = "Creates growl notifications for Atom entries"
   s.bindir = 'bin'

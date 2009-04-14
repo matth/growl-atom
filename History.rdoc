@@ -1,0 +1,13 @@
+=== 0.0.3 / 2009-04-14
+
+* Added support for client SSL certs
+* Trim cache files to 500 lines, should be enough for even the longest feeds!
+* Add confirmation when installing so config doesn't get overwritten automatically
+
+=== 0.0.2 / 2009-04-14
+
+* Auto build from github
+
+=== 0.0.1 / 2009-04-12
+
+* Initial release
