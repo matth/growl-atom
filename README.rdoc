@@ -99,12 +99,11 @@ user's profile
 
 Then uninstall the gem
 
-	gem uninstall growl-atom -a
+	sudo gem uninstall matth-growl-atom -a
 	
 == Known Issues and Future Improvements
 
 * No support for web proxies (how to do this intelligently i.e. Not hardcoding it in the config)
-* No support for client certificates
 
 == License:
 
