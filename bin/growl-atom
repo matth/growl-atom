@@ -49,8 +49,8 @@ case ARGV[0]
 		
 		# Create user config dir
 		system 'mkdir -p ' + File.join(user_dir, '.growl-atom/caches')
-		system "cp #{File.join(gem_dir, 'config')} #{File.join(user_dir, '.growl-atom/config')}"
-		system "cp -r #{File.join(gem_dir, 'icons')} #{File.join(user_dir, '.growl-atom/icons')}"		
+		system "cp -i #{File.join(gem_dir, 'config')} #{File.join(user_dir, '.growl-atom/config')}"
+		system "cp -ri #{File.join(gem_dir, 'icons')} #{File.join(user_dir, '.growl-atom/icons')}"		
 		
 		# Create Launch Agent dir
 		if (!File.directory?(launch_agents_dir))
