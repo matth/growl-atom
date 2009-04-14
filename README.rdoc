@@ -1,8 +1,9 @@
-= GrowlAtom
+= growl-atom
 
 A script to monitor Atom feeds and create Growl notitifcations for new entries
 
-== Prerequisites:
+== Prerequisites
+
 
 * Mac OS X, obviously Growl is a Mac app!
 * Growl See: http://growl.info
