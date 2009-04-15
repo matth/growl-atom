@@ -112,10 +112,6 @@ Then uninstall the gem
 
 	sudo gem uninstall matth-growl-atom -a
 	
-== Known Issues and Future Improvements
-
-* No support for web proxies (how to do this intelligently i.e. Not hardcoding it in the config)
-
 == License:
 
 (GPLv3)
