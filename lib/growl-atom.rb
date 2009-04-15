@@ -9,7 +9,7 @@ require 'rexml/document'
 
 module GrowlAtom
 
-	VERSION = "0.0.3"
+	VERSION = "0.0.4"
 	
 	class Error < StandardError; end
 
@@ -46,10 +46,11 @@ module GrowlAtom
 		
 		uri = URI.parse(options['url'])
 
-		http = Net::HTTP.new(uri.host, uri.port)
+		http = Net::HTTP::Proxy(options['proxy_host'], options['proxy_port'], 
+						 options['proxy_user'], options['proxy_pass']).new(uri.host, uri.port)
 
-		req = Net::HTTP::Get.new(uri.path)
-
+		req = Net::HTTP::Get.new(uri.path)	
+	
 		if (uri.scheme == 'https')
 			http.use_ssl = true
 			http.verify_mode = OpenSSL::SSL::VERIFY_NONE
@@ -61,20 +62,20 @@ module GrowlAtom
 		
 		if (options['cert']) 
 			File.open(File.expand_path(options['cert'])) do |cert_file|
-            	key_data = cert_file.read
-              	http.cert = OpenSSL::X509::Certificate.new(key_data)
-              	http.key = OpenSSL::PKey::RSA.new(key_data, nil)
-           	end
+				key_data = cert_file.read
+				http.cert = OpenSSL::X509::Certificate.new(key_data)
+				http.key = OpenSSL::PKey::RSA.new(key_data, nil)
+			end
 		end
-		
+	
 		response = http.request(req)
 		
 		if (!response.kind_of?(Net::HTTPClientError) && !response.kind_of?(Net::HTTPServerError))
 			return response.body
 		end
 		
-		raise Error, "#{response.code} Error in HTTP Response for #{options['url']}"
-		
+		raise Error, "#{response.code} Error in HTTP Response for #{options['url']}"			
+						
 	end
 	
 	# Parse feed xml

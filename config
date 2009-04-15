@@ -7,6 +7,10 @@
 # global:
 #  growl_host : localhost
 #  growl_pass : your_pass
+#  proxy_host: your.proxy
+#  proxy_port: 80
+#  proxy_user: username
+#  proxy_pass: password
 #
 # feeds:
 #  name: Growl Application Name

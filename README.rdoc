@@ -58,6 +58,17 @@ This is the same command that will be run periodically by the LaunchAgent. Any e
 show up here, if you are experiencing errors when the LaunchAgent is running then check log messages 
 in /Applications/Utilities/Console
 
+== Using growl-atom behind a web proxy
+
+If your internet connection lives behind a proxy you can configure growl-atom to make all
+connections through this. Add the following to the global config or on a per feed basis.
+
+	global:
+	 proxy_host: your.proxy
+	 proxy_port: 80
+	 proxy_user: username (if req.)
+	 proxy_pass: password (if req.)	 
+
 == Using growl-atom with HTTP authentication
 
 If you feed requires http athentication you can provide the username and password in the config file
