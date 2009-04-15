@@ -28,8 +28,6 @@
 #	Atom entry IDs are stored in them once a notification has been shown. They can be found in
 #	~/.growl-atom/caches/
 #
-$:.unshift 'lib'
-
 require 'rubygems'
 require 'growl-atom'
 require 'rdoc/usage'
