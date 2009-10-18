@@ -11,5 +11,5 @@ Gem::Specification.new do |s|
   s.files = ["config", "growl.atom.plist", "lib/growl-atom.rb", "icons/gmail.png"]
   s.require_path = "lib"
   s.has_rdoc = false
-  s.add_dependency('visionmedia-growl', '>= 0.0.6')
+  s.add_dependency('growl', '>= 0.0.6')
 end
