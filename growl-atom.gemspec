@@ -4,7 +4,6 @@ Gem::Specification.new do |s|
   s.author = "Matt Haynes"
   s.email = "matt@matthaynes.net"
   s.homepage = "http://github.com/matth/growl-atom/tree/master"
-  s.platform = 'universal-darwin-9'
   s.summary = "Creates growl notifications for Atom entries"
   s.bindir = 'bin'
   s.executables << 'growl-atom'
