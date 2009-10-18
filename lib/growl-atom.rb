@@ -33,7 +33,8 @@ module GrowlAtom
 		cache_dir = File.join(config_dir, 'caches')
 				
 		config['feeds'].each {|feed|
-			options = default_options.merge(config['global']).merge(feed)
+		  options = feed
+			options = default_options.merge(config['global']).merge(feed) if config['global']
 			self.parse_feed(self.get_feed(options), options, cache_dir)
 		}
 
