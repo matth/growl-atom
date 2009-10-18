@@ -39,7 +39,6 @@ feeds and config options to this file. This is a YAML file.
 	---
 	
 	global:
-	 growl_host : localhost
 	 
 	feeds:
 	 - name: Gmail

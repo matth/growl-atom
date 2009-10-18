@@ -1,4 +1,5 @@
 require 'rubygems'
+gem 'growl', '=1.0.3'
 require 'growl'
 require 'yaml'
 require 'digest/md5'
@@ -25,7 +26,6 @@ module GrowlAtom
 			:name => 'growl-atom',
 			:title => 'title',
 			:message => 'summary',
-			:growl_host => 'localhost',
 			:sticky => false
 		}
 		
@@ -96,12 +96,10 @@ module GrowlAtom
 				growl_options = {}
 				
 				growl_options['name'] = options['name']
-				growl_options['host'] = options['growl_host']
 				growl_options['sticky'] = options['sticky']
 				growl_options['title'] = entry.elements[options['title']].text
 				growl_options['message'] = entry.elements[options['message']].text				
 				
-				growl_options['password'] = options['growl_pass'] unless(options['growl_pass'] == nil)
 				growl_options['image'] = File.expand_path(options['image']) unless(options['image'] == nil)
 								
 				Growl.notify(growl_options['message'], growl_options)

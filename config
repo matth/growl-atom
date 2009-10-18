@@ -5,8 +5,6 @@
 # Available options:
 #
 # global:
-#  growl_host : localhost
-#  growl_pass : your_pass
 #  proxy_host: your.proxy
 #  proxy_port: 80
 #  proxy_user: username
@@ -29,7 +27,7 @@
 # These config options can be overwritten on a per feed basis
 
 global:
- growl_host : localhost
+
  
 feeds:
  - name: Gmail
