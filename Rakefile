@@ -8,7 +8,7 @@ end
 
 task :install => [:gem] do
 	# Install local gem
-	sh "gem install -l growl-atom-#{GrowlAtom::VERSION}-universal-darwin-9.gem"
+	sh "gem install -l growl-atom-#{GrowlAtom::VERSION}.gem"
 end
 
 task :gem do

@@ -10,7 +10,7 @@ require 'rexml/document'
 
 module GrowlAtom
 
-	VERSION = "0.0.4"
+	VERSION = "0.0.6"
 	
 	class Error < StandardError; end
 
