@@ -50,7 +50,7 @@ module GrowlAtom
 		http = Net::HTTP::Proxy(options['proxy_host'], options['proxy_port'], 
 						 options['proxy_user'], options['proxy_pass']).new(uri.host, uri.port)
 
-		req = Net::HTTP::Get.new(uri.path)	
+		req = Net::HTTP::Get.new(options['url'])	
 	
 		if (uri.scheme == 'https')
 			http.use_ssl = true
